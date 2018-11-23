@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="JelvehabKhoramshahrModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaterialName" Type="nvarchar" MaxLength="200" />
+          <Property Name="UnitPrice" Type="int" />
+        </EntityType>
+        <EntityType Name="PreparingFood">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MaterialId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="UnitPrice" Type="int" Nullable="false" />
+          <Property Name="totalPrice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SurplasCosts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodId" Type="int" Nullable="false" />
+          <Property Name="SurplasCostTitle" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="unitPrice" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_PreparingFood_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="PreparingFood" Type="Self.PreparingFood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PreparingFood">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SurplasCosts_PreparingFood">
+          <End Role="PreparingFood" Type="Self.PreparingFood" Multiplicity="1" />
+          <End Role="SurplasCosts" Type="Self.SurplasCosts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreparingFood">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SurplasCosts">
+              <PropertyRef Name="FoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JelvehabKhoramshahrModelStoreContainer">
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreparingFood" EntityType="Self.PreparingFood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SurplasCosts" EntityType="Self.SurplasCosts" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PreparingFood_Material" Association="Self.FK_PreparingFood_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="PreparingFood" EntitySet="PreparingFood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SurplasCosts_PreparingFood" Association="Self.FK_SurplasCosts_PreparingFood">
+            <End Role="PreparingFood" EntitySet="PreparingFood" />
+            <End Role="SurplasCosts" EntitySet="SurplasCosts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JelvehabKhoramshahrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaterialName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UnitPrice" Type="Int32" />
+          <NavigationProperty Name="PreparingFood" Relationship="Self.FK_PreparingFood_Material" FromRole="Material" ToRole="PreparingFood" />
+        </EntityType>
+        <EntityType Name="PreparingFood">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaterialId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="UnitPrice" Type="Int32" Nullable="false" />
+          <Property Name="totalPrice" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Material" Relationship="Self.FK_PreparingFood_Material" FromRole="PreparingFood" ToRole="Material" />
+          <NavigationProperty Name="SurplasCosts" Relationship="Self.FK_SurplasCosts_PreparingFood" FromRole="PreparingFood" ToRole="SurplasCosts" />
+        </EntityType>
+        <EntityType Name="SurplasCosts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodId" Type="Int32" Nullable="false" />
+          <Property Name="SurplasCostTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="unitPrice" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="PreparingFood" Relationship="Self.FK_SurplasCosts_PreparingFood" FromRole="SurplasCosts" ToRole="PreparingFood" />
+        </EntityType>
+        <Association Name="FK_PreparingFood_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="PreparingFood" Type="Self.PreparingFood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PreparingFood">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SurplasCosts_PreparingFood">
+          <End Role="PreparingFood" Type="Self.PreparingFood" Multiplicity="1" />
+          <End Role="SurplasCosts" Type="Self.SurplasCosts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreparingFood">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SurplasCosts">
+              <PropertyRef Name="FoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JelvehabKhoramshahrEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Material" EntityType="Self.Material" />
+          <EntitySet Name="PreparingFood" EntityType="Self.PreparingFood" />
+          <EntitySet Name="SurplasCosts" EntityType="Self.SurplasCosts" />
+          <AssociationSet Name="FK_PreparingFood_Material" Association="Self.FK_PreparingFood_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="PreparingFood" EntitySet="PreparingFood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SurplasCosts_PreparingFood" Association="Self.FK_SurplasCosts_PreparingFood">
+            <End Role="PreparingFood" EntitySet="PreparingFood" />
+            <End Role="SurplasCosts" EntitySet="SurplasCosts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JelvehabKhoramshahrModelStoreContainer" CdmEntityContainer="JelvehabKhoramshahrEntities">
+          <EntitySetMapping Name="Material">
+            <EntityTypeMapping TypeName="JelvehabKhoramshahrModel.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreparingFood">
+            <EntityTypeMapping TypeName="JelvehabKhoramshahrModel.PreparingFood">
+              <MappingFragment StoreEntitySet="PreparingFood">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SurplasCosts">
+            <EntityTypeMapping TypeName="JelvehabKhoramshahrModel.SurplasCosts">
+              <MappingFragment StoreEntitySet="SurplasCosts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+                <ScalarProperty Name="SurplasCostTitle" ColumnName="SurplasCostTitle" />
+                <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
