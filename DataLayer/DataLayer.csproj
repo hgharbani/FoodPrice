@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\UnitOfWork.cs" />
     <Compile Include="FoodPrice.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,6 +72,8 @@
       <DependentUpon>FoodPrice.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IMaterialRepositories.cs" />
+    <Compile Include="Services\MaterialRepositories.cs" />
     <Compile Include="SurplasCosts.cs">
       <DependentUpon>FoodPrice.tt</DependentUpon>
     </Compile>
