@@ -55,15 +55,13 @@ namespace FoodPrice.Material
             }
         }
 
-       
-
         private void button4_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow != null)
             {
                 var id = dataGridView1.CurrentRow.Cells[0].Value;
                 var model = db.Material.Find(id);
-                AddOrEditMaterial formEdit= new AddOrEditMaterial();
+                AddOrEditMaterial formEdit = new AddOrEditMaterial();
                 formEdit.Id.Text = id.ToString();
                 formEdit.textBox1.Text = model.MaterialName;
                 formEdit.textBox2.Text = model.UnitPrice.ToString();
