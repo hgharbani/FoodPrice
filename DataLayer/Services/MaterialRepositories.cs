@@ -30,6 +30,11 @@ namespace DataLayer.Services
         {
             try
             {
+                
+                if (db.Material.Any(a => a.MaterialName == material.MaterialName))
+                {
+                    return false;
+                }
                 db.Material.Add(material);
                 return true;
             }
@@ -79,9 +84,9 @@ namespace DataLayer.Services
             }
         }
 
-        public void Save()
+        public IEnumerable<Material> GetMaterials(string parameter)
         {
-            db.SaveChanges();
+           return db.Material.Where(c => c.MaterialName.Contains(parameter) || c.UnitPrice.ToString().Contains(parameter)).ToList();
         }
     }
 }

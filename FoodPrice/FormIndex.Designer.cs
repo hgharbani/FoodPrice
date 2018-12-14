@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -46,7 +47,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.SumPriceMAterial = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -61,11 +61,26 @@
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(358, -2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(529, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(256, 368);
+            this.panel1.Size = new System.Drawing.Size(255, 561);
             this.panel1.TabIndex = 2;
+            // 
+            // button3
+            // 
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(1, 256);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(251, 85);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "خروج از برنامه";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -73,7 +88,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(0, 186);
+            this.button2.Location = new System.Drawing.Point(2, 165);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(251, 85);
             this.button2.TabIndex = 9;
@@ -88,7 +103,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(2, 100);
+            this.button1.Location = new System.Drawing.Point(4, 74);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(251, 85);
             this.button1.TabIndex = 8;
@@ -100,10 +115,10 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.MediumAquamarine;
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(358, -1);
+            this.panel2.Location = new System.Drawing.Point(0, -1);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(256, 81);
+            this.panel2.Size = new System.Drawing.Size(784, 81);
             this.panel2.TabIndex = 3;
             // 
             // label1
@@ -113,7 +128,7 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(2, 25);
+            this.label1.Location = new System.Drawing.Point(294, 20);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(238, 31);
@@ -125,10 +140,10 @@
             this.panel8.BackColor = System.Drawing.Color.DarkCyan;
             this.panel8.Controls.Add(this.CountFood);
             this.panel8.Controls.Add(this.label7);
-            this.panel8.Location = new System.Drawing.Point(9, 184);
+            this.panel8.Location = new System.Drawing.Point(10, 264);
             this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(330, 81);
+            this.panel8.Size = new System.Drawing.Size(516, 81);
             this.panel8.TabIndex = 7;
             // 
             // CountFood
@@ -147,7 +162,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(191, 25);
+            this.label7.Location = new System.Drawing.Point(385, 25);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(118, 24);
@@ -159,10 +174,10 @@
             this.panel7.BackColor = System.Drawing.Color.DarkKhaki;
             this.panel7.Controls.Add(this.SumPriceFood);
             this.panel7.Controls.Add(this.label8);
-            this.panel7.Location = new System.Drawing.Point(9, 274);
+            this.panel7.Location = new System.Drawing.Point(10, 349);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(330, 81);
+            this.panel7.Size = new System.Drawing.Size(516, 81);
             this.panel7.TabIndex = 8;
             // 
             // SumPriceFood
@@ -181,7 +196,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(187, 25);
+            this.label8.Location = new System.Drawing.Point(379, 25);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(124, 24);
@@ -194,10 +209,10 @@
             this.panel3.Controls.Add(this.CountMAterial);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(10, 10);
+            this.panel3.Location = new System.Drawing.Point(10, 94);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(330, 81);
+            this.panel3.Size = new System.Drawing.Size(515, 81);
             this.panel3.TabIndex = 9;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -226,7 +241,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(190, 22);
+            this.label5.Location = new System.Drawing.Point(385, 25);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(118, 24);
@@ -238,10 +253,10 @@
             this.panel4.BackColor = System.Drawing.Color.Tan;
             this.panel4.Controls.Add(this.SumPriceMAterial);
             this.panel4.Controls.Add(this.label6);
-            this.panel4.Location = new System.Drawing.Point(10, 98);
+            this.panel4.Location = new System.Drawing.Point(10, 179);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(330, 81);
+            this.panel4.Size = new System.Drawing.Size(516, 81);
             this.panel4.TabIndex = 10;
             // 
             // SumPriceMAterial
@@ -260,40 +275,26 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(190, 24);
+            this.label6.Location = new System.Drawing.Point(383, 24);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(120, 24);
             this.label6.TabIndex = 2;
             this.label6.Text = "قیمت مواد لازم:";
             // 
-            // button3
-            // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(2, 276);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(251, 85);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "خروج از برنامه";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // FormIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(607, 366);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormIndex";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

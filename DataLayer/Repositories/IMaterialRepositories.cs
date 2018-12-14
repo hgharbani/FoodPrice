@@ -9,11 +9,12 @@ namespace DataLayer.Repositories
     public interface IMaterialRepositories
     {
         List<Material> GetAllMaterials();
+        IEnumerable<Material> GetMaterials(string parameter);
         Material GetMaterialById(int materialId);
         bool InsertMaterial(Material material);
         bool UpdateMaterial(Material material);
         bool DeleteMaterial(Material material);
         bool DeleteMaterial(int materialId);
-        void Save();
+       
     }
 }

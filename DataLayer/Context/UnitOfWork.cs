@@ -12,6 +12,7 @@ namespace DataLayer.Context
     {
         JelvehabKhoramshahrEntities db=new JelvehabKhoramshahrEntities();
         private IMaterialRepositories _materialRepositories;
+        
         public IMaterialRepositories MaterialRepositories
         {
             get
@@ -25,10 +26,13 @@ namespace DataLayer.Context
             }
         }
 
-
+        public void Save()
+        {
+            db.SaveChanges();
+        }
         public void Dispose()
         {
-            Dispose();
+            db.Dispose();
 
         }
     }
