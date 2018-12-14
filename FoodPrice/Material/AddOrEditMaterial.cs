@@ -30,17 +30,16 @@ namespace FoodPrice.Material
                 MessageBox.Show("قیمت کالا را وارد نمایید");
             }
 
-            var id = int.Parse(Id.Text);
-            if (db.Material.Any(a => a.Id != id && a.MaterialName == textBox1.Text))
+            if (db.Material.Any(a => a.MaterialName == textBox1.Text))
             {
                 MessageBox.Show("کالا تکراری می باشد");
             }
-
-            var SearchMaterial = db.Material.Find(id);
-
-            SearchMaterial.MaterialName = textBox1.Text;
-            SearchMaterial.UnitPrice = int.Parse(textBox2.Text);
-
+            var model = new DataLayer.Material()
+            {
+                MaterialName = textBox1.Text,
+                UnitPrice = int.Parse(textBox2.Text)
+            };
+            db.Material.Add(model);
             if (db.SaveChanges() > 0)
             {
                 MessageBox.Show("ثبت شد");
@@ -62,16 +61,17 @@ namespace FoodPrice.Material
                 MessageBox.Show("قیمت کالا را وارد نمایید");
             }
 
-            if (db.Material.Any(a => a.MaterialName == textBox1.Text))
+            var id = int.Parse(Id.Text);
+            if (db.Material.Any(a => a.Id != id && a.MaterialName == textBox1.Text))
             {
                 MessageBox.Show("کالا تکراری می باشد");
             }
-            var model = new DataLayer.Material()
-            {
-                MaterialName = textBox1.Text,
-                UnitPrice = int.Parse(textBox2.Text)
-            };
-            db.Material.Add(model);
+
+            var SearchMaterial = db.Material.Find(id);
+
+            SearchMaterial.MaterialName = textBox1.Text;
+            SearchMaterial.UnitPrice = int.Parse(textBox2.Text);
+
             if (db.SaveChanges() > 0)
             {
                 MessageBox.Show("ثبت شد");
@@ -80,6 +80,8 @@ namespace FoodPrice.Material
             {
                 MessageBox.Show("کالا ثبت نگردید");
             }
+
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -87,10 +89,13 @@ namespace FoodPrice.Material
             if (string.IsNullOrWhiteSpace(Id.Text))
             {
                 AddMaterial();
+                
             }
             else
             {
+                EditMaterial();
             }
+            this.Close();
         }
     }
 }

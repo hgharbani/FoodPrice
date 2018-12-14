@@ -19,6 +19,6 @@ namespace DataLayer
         public string SurplasCostTitle { get; set; }
         public long unitPrice { get; set; }
     
-        public virtual PreparingFood PreparingFood { get; set; }
+        public virtual Food Food { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace FoodPrice
                 CountMAterial.Text = materailquery.Count().ToString();
                 SumPriceMAterial.Text = materailquery.Sum(a => a.UnitPrice).ToString() + "تومان";
                 var foodQuery = db.PreparingFood.AsNoTracking();
-                CountFood.Text = foodQuery.GroupBy(a => a.FoodName).Count().ToString();
+                CountFood.Text = foodQuery.GroupBy(a => a.Food.FoodName).Count().ToString();
                 SumPriceFood.Text = db.SurplasCosts.Any() ? db.SurplasCosts.Sum(a => a.unitPrice).ToString() + "تومان" : "0";
             }
         }
@@ -38,52 +38,24 @@ namespace FoodPrice
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
         }
+                   
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             Material.MaterialIndex material = new MaterialIndex();
             material.Show();
         }
-
-        private void label3_Click(object sender, EventArgs e)
+        
+        private void button2_Click(object sender, EventArgs e)
         {
             Form1 form1 = new Form1();
             form1.Show();
         }
 
-        private void label2_MouseHover(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            label2.ForeColor = Color.DarkRed;
-        }
+            Application.Exit();
 
-        private void label2_MouseLeave(object sender, EventArgs e)
-        {
-            label2.ForeColor = Color.White;
-        }
-
-        private void label3_MouseHover(object sender, EventArgs e)
-        {
-            label3.ForeColor = Color.DarkRed;
-        }
-
-        private void label3_MouseLeave(object sender, EventArgs e)
-        {
-            label3.ForeColor = Color.White;
-        }
-
-        private void label4_MouseHover(object sender, EventArgs e)
-        {
-            label4.ForeColor = Color.DarkRed;
-        }
-
-        private void label4_MouseLeave(object sender, EventArgs e)
-        {
-            label4.ForeColor = Color.White;
         }
     }
 }

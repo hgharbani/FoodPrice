@@ -95,6 +95,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Food\AddOrEditFood.resx">
+      <DependentUpon>AddOrEditFood.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Food\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

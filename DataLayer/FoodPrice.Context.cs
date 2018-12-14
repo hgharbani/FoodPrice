@@ -26,7 +26,8 @@ namespace DataLayer
         }
     
         public virtual DbSet<Material> Material { get; set; }
-        public virtual DbSet<PreparingFood> PreparingFood { get; set; }
         public virtual DbSet<SurplasCosts> SurplasCosts { get; set; }
+        public virtual DbSet<Food> Food { get; set; }
+        public virtual DbSet<PreparingFood> PreparingFood { get; set; }
     }
 }

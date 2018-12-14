@@ -14,21 +14,14 @@ namespace DataLayer
     
     public partial class PreparingFood
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PreparingFood()
-        {
-            this.SurplasCosts = new HashSet<SurplasCosts>();
-        }
-    
         public int Id { get; set; }
-        public string FoodName { get; set; }
+        public int FoodId { get; set; }
         public int MaterialId { get; set; }
         public int Quantity { get; set; }
         public int UnitPrice { get; set; }
         public int totalPrice { get; set; }
     
+        public virtual Food Food { get; set; }
         public virtual Material Material { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SurplasCosts> SurplasCosts { get; set; }
     }
 }

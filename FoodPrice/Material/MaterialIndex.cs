@@ -15,10 +15,11 @@ namespace FoodPrice.Material
             InitializeComponent();
         }
 
-        private void MaterialIndex_Load(object sender, EventArgs e)
+        public void ShowMaterialGrid()
         {
             using (JelvehabKhoramshahrEntities db = new JelvehabKhoramshahrEntities())
             {
+                dataGridView1.AutoGenerateColumns = false;
                 var model = db.Material.Select(a => new
                 {
                     a.Id,
@@ -27,6 +28,11 @@ namespace FoodPrice.Material
                 }).ToList();
                 dataGridView1.DataSource = model;
             }
+        }
+        private void MaterialIndex_Load(object sender, EventArgs e)
+        {
+           ShowMaterialGrid();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -37,22 +43,29 @@ namespace FoodPrice.Material
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var id = dataGridView1.CurrentRow.Cells[0].Value;
-            var model = db.Material.Find(id);
-            if (model == null)
+            if (dataGridView1.RowCount > 0)
             {
-                MessageBox.Show("کالا حذف شده است");
-            }
+                var id = dataGridView1.CurrentRow.Cells[0].Value;
+                var model = db.Material.Find(id);
+                if (model == null)
+                {
+                    MessageBox.Show("کالا حذف شده است");
+                }
 
-            if (model.PreparingFood.Any())
-            {
-                MessageBox.Show("قادر به حذف این کالا نمی باشد زیرا در چندین غذا در حال استفاده است");
+                if (model.PreparingFood.Any())
+                {
+                    MessageBox.Show("قادر به حذف این کالا نمی باشد زیرا در چندین غذا در حال استفاده است");
+                }
+                else
+                {
+                    db.Material.Remove(model);
+                    db.SaveChanges();
+
+                    MessageBox.Show("کالا با موفقیت حذف شد");
+                }
+                ShowMaterialGrid();
             }
-            else
-            {
-                db.Material.Remove(model);
-                MessageBox.Show("کالا با موفقیت حذف شد");
-            }
+           
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -71,6 +84,26 @@ namespace FoodPrice.Material
             {
                 MessageBox.Show("آیتمی انتخاب نشده است");
             }
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                ShowMaterialGrid();
+            }
+            else
+            {
+                dataGridView1.DataSource = db.Material.Where(c => c.MaterialName.Contains(textBox1.Text) || c.UnitPrice.ToString().Contains(textBox1.Text)).ToList();
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            ShowMaterialGrid();
         }
     }
 }

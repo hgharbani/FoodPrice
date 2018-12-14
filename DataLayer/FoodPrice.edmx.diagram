@@ -6,10 +6,12 @@
     <edmx:Diagrams>
       <Diagram DiagramId="329d95189f8b42ea99b2cbbe7c713f18" Name="Diagram1">
         <EntityTypeShape EntityType="JelvehabKhoramshahrModel.Material" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="JelvehabKhoramshahrModel.PreparingFood" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="JelvehabKhoramshahrModel.SurplasCosts" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <AssociationConnector Association="JelvehabKhoramshahrModel.FK_PreparingFood_Material" ManuallyRouted="false" />
-        <AssociationConnector Association="JelvehabKhoramshahrModel.FK_SurplasCosts_PreparingFood" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="JelvehabKhoramshahrModel.Food" Width="1.5" PointX="4.25" PointY="4.25" />
+        <AssociationConnector Association="JelvehabKhoramshahrModel.FK_SurplasCosts_PreparingFood1" />
+        <EntityTypeShape EntityType="JelvehabKhoramshahrModel.PreparingFood" Width="1.5" PointX="2.75" PointY="1.25" />
+        <AssociationConnector Association="JelvehabKhoramshahrModel.FK_PreparingFood_Food" />
+        <AssociationConnector Association="JelvehabKhoramshahrModel.FK_PreparingFood_Material" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

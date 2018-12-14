@@ -50,6 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\UnitOfWork.cs" />
+    <Compile Include="Food.cs">
+      <DependentUpon>FoodPrice.tt</DependentUpon>
+    </Compile>
     <Compile Include="FoodPrice.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
